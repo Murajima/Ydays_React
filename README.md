@@ -7,4 +7,13 @@ Il faut initialiser un compteur dans un 1er temps, puis une toDoList.
 
 Le compteur est fonctionnel et utilise Redux.
 
-La toDoList n'est pas fonctionnelle. Pour le moment seule la valeur du composant TextInput est affiché en temps réel sur l'application.
+La todoListe est fonctionnelle. Cette dernière affiche les différentes entrées de l'utilisateur dans le composant TextInput en une seule ligne lorsque le bouton submit est cliqué. la todoListe utilise Redux.
+
+## Lancer le projet
+
+Utiliser les commandes suivantes dans le répertoire du projet:
+
+`npm install`
+`yarn start`
+
+Flasher le QR code sur votre téléphone avec l'application Expo. Le téléphone et l'ordinateur lançant ces commandes doivent être sur le même réseau.
