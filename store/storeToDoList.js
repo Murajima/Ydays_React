@@ -1,13 +1,19 @@
 const INITIAL_STATE = {
-  text: ''
+  textField: '',
+  list: []
 };
 
 export default todoList = (state = INITIAL_STATE, action = {}) => {
   switch (action.type) {
-    case 'ADD_LIST':
+    case 'FIELD_CHANGE':
       return {
         ...state,
-        text: action.text
+        textField: action.text
+      };
+    case 'ADD_LIST':
+      return {
+        textField: '',
+        list: [...state.list, action.text]
       };
     default:
       return state;
