@@ -3,7 +3,7 @@ const INITIAL_STATE = {
   list: []
 };
 
-export default todoList = (state = INITIAL_STATE, action = {}) => {
+export default todoListReducer = (state = INITIAL_STATE, action = {}) => {
   switch (action.type) {
     case 'FIELD_CHANGE':
       return {
@@ -15,6 +15,11 @@ export default todoList = (state = INITIAL_STATE, action = {}) => {
         textField: '',
         list: [...state.list, action.text]
       };
+    case 'REMOVE_TEXT':
+      return {
+        ...state,
+        textField: ''
+      }
     default:
       return state;
   }

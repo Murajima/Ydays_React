@@ -11,7 +11,7 @@ import { createStore } from 'redux';
 import store from './store/index.js'
 import CounterContainer from './containers/CounterContainer.js'
 import TodoListContainer from './containers/TodoListContainer.js'
-import Cart from './components/Cart.js'
+import Counter from './components/Counter.js'
 import TodoList from './components/TodoList.js'
 
 export default class App extends Component {
@@ -19,7 +19,8 @@ export default class App extends Component {
     return (
         <Provider store={store}>
           <View style={styles.container}>
-            <Cart/>
+            <CounterContainer/>
+            <TodoListContainer/>
           </View>
         </Provider>
     );
