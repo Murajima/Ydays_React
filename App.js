@@ -1,36 +1,50 @@
-import React, { Component } from 'react';
-import {
-  AppRegistry,
-  StyleSheet,
-  View,
-  Text
-} from 'react-native';
-import { Provider } from 'react-redux';
-import { connect } from 'react-redux';
-import { createStore } from 'redux';
-import store from './store/index.js'
-import CounterContainer from './containers/CounterContainer.js'
-import TodoListContainer from './containers/TodoListContainer.js'
-import Cart from './components/Cart.js'
-import TodoList from './components/TodoList.js'
+import React from 'react';
+import PropTypes from 'prop-types';
+import About from './components/About';
+import Search from './components/Search';
+import {StyleSheet, View, StatusBar, Text} from 'react-native';
+import {DrawerNavigator, DrawerItems} from 'react-navigation';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-export default class App extends Component {
-  render() {
-    return (
-        <Provider store={store}>
-          <View style={styles.container}>
-            <Cart/>
-          </View>
-        </Provider>
-    );
-  }
-}
+const CustomDrawerContentComponent = (props) => (
+    <View style={styles.container}>
+        <View style={{flex: 1}}>
+            <View style={{
+                backgroundColor: '#0D47A1',
+                paddingTop: StatusBar.currentHeight,
+                flexDirection: 'row',
+                justifyContent: 'flex-start',
+                alignItems: 'center',
+                alignContent: 'center',
+                height: 150
+            }}>
+                <MaterialCommunityIcons
+                    name="weather-sunny"
+                    size={50}
+                    style={{color: '#FFF', marginLeft: 20}}
+                />
+                <Text style={{color: '#FFF', fontWeight: 'bold', fontSize: 30, marginLeft: 10}}>OpenWeather</Text>
+            </View>
+            <DrawerItems {...props} />
+        </View>
+    </View>
+);
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    top: 150
-  },
+    container: {
+        flex: 1
+    },
 });
+
+const drawer = DrawerNavigator({
+    Home: {
+        screen: Search,
+    },
+    Notifications: {
+        screen: About,
+    },
+}, {
+    contentComponent: CustomDrawerContentComponent
+});
+
+export default drawer;
