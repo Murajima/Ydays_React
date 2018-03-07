@@ -26,5 +26,9 @@ export default StyleSheet.create({
         borderColor: '#454545',
         borderWidth: 1,
         marginBottom: 5
+    },
+    noData: {
+        fontSize: 22,
+        marginHorizontal: 10
     }
 });

@@ -25,6 +25,8 @@ export default class Results extends React.Component {
         axios.get(`http://api.openweathermap.org/data/2.5/forecast/daily?q=${this.props.navigation.state.params.city},${this.props.navigation.state.params.country}&units=metric&cnt=10&appid=e4f553a11f62a9878eccbeba481770f4`)
             .then((response) => {
                 this.setState({report: response.data});
+            }).catch((response) => {
+                this.setState({report: "No data was found"});
             })
     }
 
@@ -32,6 +34,10 @@ export default class Results extends React.Component {
         if (this.state.report === null) {
             return (
                 <ActivityIndicator style={Style.aboutView} size="large" animating={true}/>
+            );
+        } else if (this.state.report === "No data was found"){
+            return (
+                <Text style={Style.noData}> No data </Text>
             );
         } else {
             const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
